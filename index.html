@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mansi ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  color: white;
+  text-align: center;
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* Layout */
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Glass Card */
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+/* Heading */
+h1 {
+  font-size: 2.2rem;
+}
+
+/* Typewriter */
+#typewriter {
+  font-size: 1.2rem;
+  min-height: 50px;
+  margin-top: 10px;
+}
+
+/* Button */
+.btn {
+  background: white;
+  color: #ff5e78;
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+}
+
+/* Hidden Button */
+.hidden-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+/* Surprise */
+#surprise {
+  display: none;
+  animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Intro -->
+  <div class="card">
+    <h1>Happy Birthday Mansi ❤️</h1>
+    <div id="typewriter"></div>
+    <button class="btn" onclick="scrollToGallery()">See Our Memories 📸</button>
+  </div>
+
+  <!-- Gallery -->
+  <div id="gallery" class="card">
+    <h1>Our Moments 📸</h1>
+    <div class="gallery">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
+      <img src="photo4.jpg">
+    </div>
+  </div>
+
+  <!-- Letters -->
+  <div class="card">
+    <h1>For You 💌</h1>
+    <p>
+      Mansi, you didn’t just enter my life… you changed it completely.  
+      Every day with you feels lighter, happier, and more meaningful.
+    </p>
+    <p>
+      You are not just someone I love —  
+      you are someone I never want to lose ❤️
+    </p>
+  </div>
+
+  <!-- Surprise -->
+  <div id="surprise" class="card">
+    <h1>🎁 Just for You</h1>
+    <p style="font-size:1.3rem;">
+      I would choose you again and again,  
+      in every lifetime ❤️
+    </p>
+  </div>
+
+</div>
+
+<!-- Hidden Button -->
+<button class="hidden-btn" onclick="showSurprise()"></button>
+
+<script>
+
+/* Typewriter */
+const text = "Mansi, you are my peace, my happiness, and my favorite person... ❤️";
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 45);
+  }
+}
+typeWriter();
+
+/* Scroll */
+function scrollToGallery() {
+  document.getElementById("gallery").scrollIntoView({behavior: "smooth"});
+}
+
+/* Surprise */
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+}
+
+/* Floating Hearts Generator */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 400);
+
+</script>
+
+</body>
+</html>
